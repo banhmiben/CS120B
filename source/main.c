@@ -14,10 +14,10 @@
 
 int main(void) {
     /* Insert DDR and PORT initializations */
-
+	DDRA = 0x00; PORTA = 0xFF;
+	DDRB = 0x00; PORTB = 0xFF;
     /* Insert your solution below */
     while (1) {
-
     }
     return 1;
 }
