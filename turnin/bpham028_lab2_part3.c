@@ -1,7 +1,7 @@
 /*	Author: lab
  *  Partner(s) Name: Ben Pham
  *	Lab Section:
- *	Assignment: Lab #2  Exercise #2
+ *	Assignment: Lab #2  Exercise #3
  *	Exercise Description: [optional - include for your own benefit]
  *
  *	I acknowledge all content contained herein, excluding template or example
@@ -37,7 +37,7 @@ int main(void) {
 		} else if ((tmpA3 && tmpA2 && tmpA1 && !tmpA0) || (tmpA3 && tmpA2 && !tmpA1 && tmpA0) || (tmpA3 && !tmpA2 && tmpA1 && tmpA0) || (!tmpA3 && tmpA2 && tmpA1 && tmpA0)) {
 			PORTC = 0x01;
 		} else {
-			PORTC = 0x00;
+			PORTC = 0x80;
 		}
 	}
 	
