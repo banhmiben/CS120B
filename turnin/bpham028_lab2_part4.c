@@ -25,12 +25,13 @@ int main(void) {
 	unsigned char tmpC = 0x00;
 	unsigned char tmpD0 = 0x00;
 	unsigned char tmpD1 = 0x00;
+	unsigned char dVal = 0x00;
 
 	while(1) {
 
-		tmpA = PINA;
-		tmpB = PINB;
-		tmpC = PINC;
+		tmpA = PINA & 0xFF;
+		tmpB = PINB & 0xFF;
+		tmpC = PINC & 0xFF;
 		totWeight = tmpA + tmpB + tmpC;
 
 		if (totWeight > 0x008C) {
@@ -40,17 +41,19 @@ int main(void) {
 		}
 
 		if (tmpA > tmpC) {
-			if ((tmpA - tmpC) > 0x50) {
+			if (tmpA - tmpC > 0x50) {
 				tmpD1 = 0x02;
 			}
 		}
 		else { 
-			if ((tmpC - tmpA) > 0x50) {
+			if (tmpC - tmpA > 0x50) {
 				tmpD1 = 0x02;
 			}
 		}
-
-		PORTD = (totWeight & 0x00FC) | tmpD0 | tmpD1;
+		
+		totWeight = totWeight >> 2;
+		dVal = (totWeight & 0x00FC) | tmpD0 | tmpD1;
+		PORTD = dVal;
 
 	}
 
